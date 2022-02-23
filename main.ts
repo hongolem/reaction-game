@@ -6,33 +6,25 @@ let timer = 0
 let start_pause = 0
 let Passing_permition = 1
 let kontrola = false
-function hra() {
-    
-    kontrola = false
-    basic.clearScreen()
-    Passing_permition = 0
-    start_pause = randint(3, 10) * 1000
-    basic.pause(start_pause)
+basic.forever(function on_forever() {
     if (Passing_permition == 1) {
-        return
+        
+        kontrola = false
+        basic.clearScreen()
+        Passing_permition = 0
+        start_pause = randint(3, 10) * 1000
+        basic.pause(start_pause)
+        kontrola = true
+        basic.showIcon(IconNames.Chessboard)
+        run_parallel()
     }
     
-    kontrola = true
-    basic.showIcon(IconNames.Chessboard)
-    run_parallel()
-}
-
+})
 function run_parallel() {
     music.playTone(Note.C, 1500)
 }
 
 control.inBackground(run_parallel)
-basic.forever(function on_forever() {
-    if (Passing_permition == 1) {
-        hra()
-    }
-    
-})
 basic.forever(function buttons() {
     
     let p1 = input.pinIsPressed(TouchPin.P1)

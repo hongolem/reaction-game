@@ -9,27 +9,22 @@ start_pause = 0
 Passing_permition = 1
 kontrola = False
 
-def hra():
-    global timer, start_pause, Passing_permition, kontrola
-    kontrola = False
-    basic.clear_screen()
-    Passing_permition = 0
-    start_pause = randint(3,10)*1000
-    basic.pause(start_pause)
+def on_forever():
     if Passing_permition == 1:
-        return
-    kontrola = True
-    basic.show_icon(IconNames.CHESSBOARD)
-    run_parallel()
+        global timer, start_pause, Passing_permition, kontrola
+        kontrola = False
+        basic.clear_screen()
+        Passing_permition = 0
+        start_pause = randint(3,10)*1000
+        basic.pause(start_pause)
+        kontrola = True
+        basic.show_icon(IconNames.CHESSBOARD)
+        run_parallel()
+basic.forever(on_forever)
 
 def run_parallel():
         music.play_tone(Note.C, 1500)
 control.in_background(run_parallel)
-
-def on_forever():
-    if Passing_permition == 1:
-        hra()
-basic.forever(on_forever)
 
 def buttons():
     global Passing_permition
