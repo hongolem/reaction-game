@@ -14,6 +14,10 @@ basic.forever(function on_forever() {
         Passing_permition = 0
         start_pause = randint(3, 10) * 1000
         basic.pause(start_pause)
+        if (Passing_permition == 1) {
+            return
+        }
+        
         kontrola = true
         basic.showIcon(IconNames.Chessboard)
         run_parallel()

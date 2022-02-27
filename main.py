@@ -17,6 +17,8 @@ def on_forever():
         Passing_permition = 0
         start_pause = randint(3,10)*1000
         basic.pause(start_pause)
+        if Passing_permition == 1:
+            return
         kontrola = True
         basic.show_icon(IconNames.CHESSBOARD)
         run_parallel()
